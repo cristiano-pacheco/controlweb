@@ -15,12 +15,11 @@ class ExpenseCategoryController {
    * GET expensecategories
    *
    * @param {object} ctx
-   * @param {Request} ctx.request
    * @param {Response} ctx.response
    */
-  async index ({ request, response }) {
-    const contacts = await ExpenseCategory.query().fetch()
-    return response.json(contacts)
+  async index ({ response }) {
+    const categories = await ExpenseCategory.query().paginate()
+    return response.json(categories)
   }
 
   /**
@@ -47,11 +46,9 @@ class ExpenseCategoryController {
    * GET expensecategories/:id
    *
    * @param {object} ctx
-   * @param {Request} ctx.request
    * @param {Response} ctx.response
-   * @param {View} ctx.view
    */
-  async show ({ params, request, response, view }) {
+  async show ({ params, response }) {
     const expenseCategory = await ExpenseCategory.findOrFail(params.id)
     return response.json(expenseCategory)
   }
@@ -81,10 +78,9 @@ class ExpenseCategoryController {
    * DELETE expensecategories/:id
    *
    * @param {object} ctx
-   * @param {Request} ctx.request
    * @param {Response} ctx.response
    */
-  async destroy ({ params, request, response }) {
+  async destroy ({ params, response }) {
     const expenseCategory = await ExpenseCategory.find(params.id)
 
     if (expenseCategory) {

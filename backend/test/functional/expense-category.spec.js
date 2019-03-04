@@ -17,11 +17,7 @@ test('get list of expense categories', async ({ client }) => {
 
   response.assertStatus(200)
 
-  response.assertJSONSubset([
-    {
-      name: 'Category 1'
-    }
-  ])
+  response.assertJSONSubset({ data: [{ name: 'Category 1' }] })
 })
 
 

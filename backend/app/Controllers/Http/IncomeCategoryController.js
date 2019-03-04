@@ -15,13 +15,12 @@ class IncomeCategoryController {
    * GET incomecategories
    *
    * @param {object} ctx
-   * @param {Request} ctx.request
    * @param {Response} ctx.response
    * @param {View} ctx.view
    */
-  async index ({ request, response }) {
-    const contacts = await IncomeCategory.query().fetch()
-    return response.json(contacts)
+  async index ({ response }) {
+    const categories = await IncomeCategory.query().paginate()
+    return response.json(categories)
   }
 
   /**
@@ -48,11 +47,9 @@ class IncomeCategoryController {
    * GET incomecategories/:id
    *
    * @param {object} ctx
-   * @param {Request} ctx.request
    * @param {Response} ctx.response
-   * @param {View} ctx.view
    */
-  async show ({ params, request, response, view }) {
+  async show ({ params, response }) {
     const incomeCategory = await IncomeCategory.findOrFail(params.id)
     return response.json(incomeCategory)
   }
@@ -82,10 +79,9 @@ class IncomeCategoryController {
    * DELETE incomecategories/:id
    *
    * @param {object} ctx
-   * @param {Request} ctx.request
    * @param {Response} ctx.response
    */
-  async destroy ({ params, request, response }) {
+  async destroy ({ params, response }) {
     const incomeCategory = await IncomeCategory.find(params.id)
 
     if (incomeCategory) {
