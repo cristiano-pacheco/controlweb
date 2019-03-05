@@ -1,9 +1,9 @@
 'use strict'
 
-class Income {
+class Expense {
   get rules () {
     return {
-      income_category_id: 'required|integer',
+      expense_category_id: 'required|integer',
       name: 'required|max:255|min:3',
       value: 'required|number',
       operation_date: 'required|date'
@@ -11,4 +11,4 @@ class Income {
   }
 }
 
-module.exports = Income
+module.exports = Expense

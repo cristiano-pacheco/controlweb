@@ -43,3 +43,11 @@ Route.get('/api/incomes/:id', 'IncomeController.show')
 Route.put('/api/incomes/:id', 'IncomeController.update').validator('Income')
 Route.post('/api/incomes', 'IncomeController.store').validator('Income')
 Route.delete('/api/incomes/:id', 'IncomeController.destroy')
+
+
+// Expenses
+Route.get('/api/expenses', 'ExpenseController.index')
+Route.get('/api/expenses/:id', 'ExpenseController.show')
+Route.put('/api/expenses/:id', 'ExpenseController.update').validator('Expense')
+Route.post('/api/expenses', 'ExpenseController.store').validator('Expense')
+Route.delete('/api/expenses/:id', 'ExpenseController.destroy')
