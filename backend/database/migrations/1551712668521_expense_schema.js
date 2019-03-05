@@ -10,6 +10,7 @@ class ExpenseSchema extends Schema {
       table.integer('expense_category_id').unsigned().notNullable()
       table.string('name').notNullable()
       table.decimal('value').notNullable()
+      table.date('operation_date').notNullable()
       table.foreign('expense_category_id').references('id').inTable('expense_categories')
       table.timestamps()
     })

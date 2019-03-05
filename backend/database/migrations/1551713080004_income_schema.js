@@ -10,6 +10,7 @@ class IncomeSchema extends Schema {
       table.integer('income_category_id').unsigned().notNullable()
       table.string('name').notNullable()
       table.decimal('value').notNullable()
+      table.date('operation_date').notNullable()
       table.foreign('income_category_id').references('id').inTable('income_categories')
       table.timestamps()
     })
